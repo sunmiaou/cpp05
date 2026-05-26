@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:42:50 by tlize             #+#    #+#             */
-/*   Updated: 2026/05/26 21:31:45 by tlize            ###   ########.fr       */
+/*   Updated: 2026/05/26 22:50:00 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,18 @@ class Bureaucrat
 {
 public:
 	Bureaucrat();
+	Bureaucrat(std::string givenName, int givenGrade);
 	Bureaucrat(const Bureaucrat &old_crat);
 	Bureaucrat &operator=(const Bureaucrat &old_crat);
 	~Bureaucrat();
 
-	const std::string	getName();
-	int					getGrade();
+	const std::string	getName() const;
+	int					getGrade() const;
 	void				incrementGrade();
 	void				decrementGrade();
 
-	//Exceptions
-	class LowGradeException: public std::exception
-	{
-	public:
-		virtual const char *what() const throw();
-	};
-	class HighGradeException: public std::exception
+	//Exception
+	class GradeException: public std::exception
 	{
 	public:
 		virtual const char *what() const throw();
