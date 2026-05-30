@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:42:50 by tlize             #+#    #+#             */
-/*   Updated: 2026/05/26 22:50:00 by tlize            ###   ########.fr       */
+/*   Updated: 2026/05/29 10:52:33 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	int					getGrade() const;
 	void				incrementGrade();
 	void				decrementGrade();
+	void				signForm();
 
 	//Exception
 	class GradeException: public std::exception

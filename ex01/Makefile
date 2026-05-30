@@ -1,6 +1,6 @@
 # == Makefile ==
 
-NAME = bureaucrat
+NAME = bureaucratAndForm
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 
@@ -10,6 +10,7 @@ INC_DIR = includes
 
 SRCS =	main.cpp \
 		$(SRC_DIR)/Bureaucrat.cpp \
+		$(SRC_DIR)/Form.cpp \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

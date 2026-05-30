@@ -38,7 +38,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &old_crat): name(old_crat.getName() + "c
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &old_crat)
 {
-	std:: cout << "Bureaucrat assignation operator called" << std::endl;
+	std::cout << "Bureaucrat assignation operator called" << std::endl;
 	if (this == &old_crat)
 		return *this;
 	this->grade = old_crat.getGrade();
