@@ -6,13 +6,14 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:57:00 by tlize             #+#    #+#             */
-/*   Updated: 2026/05/30 14:31:58 by tlize            ###   ########.fr       */
+/*   Updated: 2026/06/02 15:58:22 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 class Form
@@ -28,7 +29,7 @@ public:
 	const int			getSign() const;
 	const int			getExec() const;
 	const std::string	isSigned() const;
-	void				beSigned();
+	void				beSigned(Bureaucrat &crat);
 private:
 	const std::string	name;
 	bool				signedd = false;

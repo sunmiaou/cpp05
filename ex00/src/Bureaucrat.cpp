@@ -24,7 +24,11 @@ Bureaucrat::Bureaucrat(std::string givenName, int givenGrade): name(givenName)
 		std::cout << "Bureaucrat constructor called" << std::endl;
 		this->applyGrade(givenGrade);
 	}
-	catch(Bureaucrat::GradeException &e)
+	catch(Bureaucrat::GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
@@ -54,10 +58,10 @@ void				Bureaucrat::incrementGrade()
 {
 	try
 	{
-		std::cout << "Grade of " << this->name << " successfuly incremented" << std::endl;
 		this->applyGrade(this->grade - 1);
+		std::cout << "Grade of " << this->name << " successfuly incremented" << std::endl;
 	}
-	catch(Bureaucrat::GradeException &e)
+	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
@@ -68,10 +72,10 @@ void				Bureaucrat::decrementGrade()
 {
 	try
 	{
+		this->applyGrade(this->grade + 1);		
 		std::cout << "Grade of " << this->name << " successfuly decremented" << std::endl;
-		this->applyGrade(this->grade + 1);
 	}
-	catch(Bureaucrat::GradeException &e)
+	catch(Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -80,8 +84,10 @@ void				Bureaucrat::decrementGrade()
 
 void				Bureaucrat::applyGrade(int grade)
 {
-	if (grade > 150 or grade < 1)
-		throw Bureaucrat::GradeException();
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 	else
 		this->grade = grade;
 }
@@ -96,9 +102,14 @@ int					Bureaucrat::getGrade() const
 	return (this->grade);
 }
 
-const char			*Bureaucrat::GradeException::what(void) const throw()
+const char			*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade not in acceptable range");
+	return ("Grade too high");
+}
+
+const char			*Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low");
 }
 
 std::ostream		&operator<<(std::ostream &out, const Bureaucrat &a)

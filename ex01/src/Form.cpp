@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 10:55:12 by tlize             #+#    #+#             */
-/*   Updated: 2026/05/30 14:31:52 by tlize            ###   ########.fr       */
+/*   Updated: 2026/06/02 16:34:08 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@ Form::~Form()
 	std::cout << "Form Destructor called" << std::endl;
 }
 
+void 				Form::beSigned(Bureaucrat &crat)
+{
+	if (crat.getGrade() > this->getSign())
+		throw(Bureaucrat::GradeTooLowException());
+	else if (this->signedd = false)
+	{
+		this->signedd = true;
+		std::cout << this->getName() << " was signed by " << crat.getName() << std::endl;
+	}
+}
+
 const std::string	Form::getName() const
 {
 	return (this->name);
@@ -64,7 +75,7 @@ const int			Form::getExec() const
 
 const std::string	Form::isSigned() const
 {
-	if (this->signedd == true)
+	if (this->signedd)
 	{
 		return (", has been signed");
 	}

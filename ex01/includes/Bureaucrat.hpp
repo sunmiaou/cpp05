@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:42:50 by tlize             #+#    #+#             */
-/*   Updated: 2026/05/29 10:52:33 by tlize            ###   ########.fr       */
+/*   Updated: 2026/06/02 16:21:10 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ public:
 	void				signForm();
 
 	//Exception
-	class GradeException: public std::exception
+	class GradeTooHighException: public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+
+	class GradeTooLowException: public std::exception
 	{
 	public:
 		virtual const char *what() const throw();
