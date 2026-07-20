@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:57:00 by tlize             #+#    #+#             */
-/*   Updated: 2026/06/02 15:58:22 by tlize            ###   ########.fr       */
+/*   Updated: 2026/07/20 17:51:29 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ public:
 	const int			getExec() const;
 	const std::string	isSigned() const;
 	void				beSigned(Bureaucrat &crat);
+
+	//Exceptions
+	class GradeTooHighException: public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+
+	class GradeTooLowException: public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
 private:
 	const std::string	name;
 	bool				signedd = false;

@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:42:50 by tlize             #+#    #+#             */
-/*   Updated: 2026/06/02 16:21:13 by tlize            ###   ########.fr       */
+/*   Updated: 2026/07/20 18:13:42 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,34 @@
 class Bureaucrat
 {
 public:
-	Bureaucrat();
-	Bureaucrat(std::string givenName, int givenGrade);
-	Bureaucrat(const Bureaucrat &old_crat);
-	Bureaucrat &operator=(const Bureaucrat &old_crat);
-	~Bureaucrat();
+    Bureaucrat();
+    Bureaucrat(const std::string &givenName, int givenGrade);
+    Bureaucrat(const Bureaucrat &old_crat);
+    Bureaucrat &operator=(const Bureaucrat &old_crat);
+    ~Bureaucrat();
 
-	const std::string	getName() const;
-	int					getGrade() const;
-	void				incrementGrade();
-	void				decrementGrade();
+    std::string   getName() const;
+    int           getGrade() const;
+    void          incrementGrade();
+    void          decrementGrade();
 
-	//Exceptions
-	class GradeTooHighException: public std::exception
-	{
-	public:
-		virtual const char *what() const throw();
-	};
+    class GradeTooHighException: public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
 
-	class GradeTooLowException: public std::exception
-	{
-	public:
-		virtual const char *what() const throw();
-	};
+    class GradeTooLowException: public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
 
 private:
-	void				applyGrade(int grade);
+    void                applyGrade(int grade);
 
-	const std::string	name;
-	int					grade;
+    const std::string   name;
+    int                 grade;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &value);

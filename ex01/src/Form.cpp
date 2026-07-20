@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 10:55:12 by tlize             #+#    #+#             */
-/*   Updated: 2026/06/02 16:34:08 by tlize            ###   ########.fr       */
+/*   Updated: 2026/07/20 17:51:23 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ Form::Form(std::string givenName, int Sign, int Exec):
 Form::Form(const Form &old_form): 
 		name(old_form.getName() + "copy"),
 		gradeSign(old_form.getSign()),
-		gradeExec(old_form.getExec())
+		gradeExec(old_form.getExec()),
+		signedd(old_form.signedd)
 {
 	std::cout << "Form copy constructor called" << std::endl;
 	*this = old_form;
@@ -56,6 +57,10 @@ void 				Form::beSigned(Bureaucrat &crat)
 		this->signedd = true;
 		std::cout << this->getName() << " was signed by " << crat.getName() << std::endl;
 	}
+	else 
+	{
+		std::cout << this->getName() << " is already signed" << std::endl;
+	}
 }
 
 const std::string	Form::getName() const
@@ -81,6 +86,16 @@ const std::string	Form::isSigned() const
 	}
 	else 
 		return (", hasn't been signed");
+}
+
+const char			*Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high");
+}
+
+const char			*Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low");
 }
 
 std::ostream		&operator<<(std::ostream &out, const Form &a)
