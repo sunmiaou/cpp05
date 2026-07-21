@@ -26,8 +26,8 @@ public:
 	~Form();
 
 	std::string			getName() const;
-	const int			getSign() const;
-	const int			getExec() const;
+	int					getSign() const;
+	int					getExec() const;
 	std::string			isSigned() const;
 	void				beSigned(Bureaucrat &crat);
 

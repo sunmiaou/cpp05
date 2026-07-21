@@ -24,7 +24,7 @@ int main()
         std::cout << f;
         clerk.signForm(f);
         std::cout << f;
-        boss.signForm(f);do
+        boss.signForm(f);
         std::cout << f;
         boss.signForm(f);
     }

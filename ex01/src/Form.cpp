@@ -65,12 +65,12 @@ std::string			Form::getName() const
 	return (this->name);
 }
 
-const int			Form::getSign() const
+int			        Form::getSign() const
 {
 	return (this->gradeSign);
 }
 
-const int			Form::getExec() const
+int		            Form::getExec() const
 {
 	return (this->gradeExec);
 }
