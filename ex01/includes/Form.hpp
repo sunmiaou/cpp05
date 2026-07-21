@@ -6,7 +6,7 @@
 /*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:57:00 by tlize             #+#    #+#             */
-/*   Updated: 2026/07/20 17:51:29 by tlize            ###   ########.fr       */
+/*   Updated: 2026/07/21 20:38:13 by tlize            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ class Form
 {
 public:
 	Form();
-	Form(std::string givenName, int Sign, int Exec);
+	Form(const std::string &givenName, int Sign, int Exec);
 	Form(const Form &old_form);
 	Form &operator=(const Form &old_form);
 	~Form();
 
-	const std::string	getName() const;
+	std::string			getName() const;
 	const int			getSign() const;
 	const int			getExec() const;
-	const std::string	isSigned() const;
+	std::string			isSigned() const;
 	void				beSigned(Bureaucrat &crat);
 
 	//Exceptions
@@ -45,7 +45,7 @@ public:
 	};
 private:
 	const std::string	name;
-	bool				signedd = false;
+	bool				signedd;
 	const int			gradeSign;
 	const int			gradeExec;
 };
